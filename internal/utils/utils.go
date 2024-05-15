@@ -37,7 +37,7 @@ func WaitForJobsToComplete(interval, timeout time.Duration) error {
 	for ; timeout > 0; timeout -= interval {
 		time.Sleep(interval)
 
-		jobs, err := k8s.BatchV1().Jobs("runai-diagnostics").List(context.TODO(),
+		jobs, err := k8s.BatchV1().Jobs(resources.ResourceNameDefault).List(context.TODO(),
 			metav1.ListOptions{})
 		if err != nil {
 			return err

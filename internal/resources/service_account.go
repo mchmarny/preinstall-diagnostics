@@ -11,10 +11,10 @@ var ServiceAccount = v1.ServiceAccount{
 		Kind:       "ServiceAccount",
 	},
 	ObjectMeta: metav1.ObjectMeta{
-		Name:      defaultResourceName,
+		Name:      ResourceNameDefault,
 		Namespace: Namespace.Name,
 		Labels: map[string]string{
-			defaultResourceName: "",
+			ResourceNameDefault: "",
 		},
 	},
 }

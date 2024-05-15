@@ -3,7 +3,7 @@ package resources
 import "github.com/run-ai/preinstall-diagnostics/internal/registry"
 
 const (
-	defaultResourceName = "runai-diagnostics"
+	ResourceNameDefault = "runai-diag"
 
 	rbacAPIGroup   = "rbac.authorization.k8s.io"
 	rbacAPIVersion = "v1"

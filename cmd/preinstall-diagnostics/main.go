@@ -2,10 +2,9 @@ package main
 
 import (
 	"flag"
-	"os"
-
 	"github.com/run-ai/preinstall-diagnostics/internal/cmd/cli"
 	"github.com/run-ai/preinstall-diagnostics/internal/cmd/job"
+	"os"
 
 	"github.com/run-ai/preinstall-diagnostics/internal/env"
 	"github.com/run-ai/preinstall-diagnostics/internal/log"
@@ -28,7 +27,7 @@ const (
 )
 
 const (
-	defaultOutputFileName = "runai-diagnostics.txt"
+	defaultOutputFileName = "runai-preinstall-diagnostics.txt"
 )
 
 var (
@@ -56,7 +55,7 @@ func init() {
 	flag.StringVar(&backendDomainFQDN, backendDomainArgName, "", "FQDN of the runai backend to resolve (required for DNS resolve test)")
 	flag.StringVar(&clusterDomainFQDN, clusterDomainArgName, "", "FQDN of the cluster")
 	flag.StringVar(&image, imageArgName, registry.RunAIDiagnosticsImage, "Diagnostics image to use (for air-gapped environments)")
-	flag.StringVar(&imagePullSecretName, imagePullSecretArgName, "", "Secret name (within the 'runai-diagnostics' namespace) that contains container-registry credentials")
+	flag.StringVar(&imagePullSecretName, imagePullSecretArgName, "", "Secret name (within the 'runai-preinstall-diagnostics' namespace) that contains container-registry credentials")
 	flag.BoolVar(&dryRun, dryRunArgName, false, "Print the diagnostics resources without executing")
 	flag.StringVar(&runaiContainerRegistry, runaiContainerRegistryArgName, registry.RunAIProdRegistryURL, "URL to container image registry to check connectivity to")
 	flag.StringVar(&runaiSaas, runaiSaasArgName, saas.RunAISaasAddress, "URL the Run:AI service to check connectivity to")

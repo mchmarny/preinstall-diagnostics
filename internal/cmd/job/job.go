@@ -35,7 +35,7 @@ func deleteConfigMapIfExists() error {
 	}
 
 	err = k8s.CoreV1().ConfigMaps(resources.Namespace.Name).Delete(context.TODO(),
-		"runai-diagnostics-"+env.EnvOrDefault("NODE_NAME", ""),
+		resources.ResourceNameDefault+"-"+env.EnvOrDefault("NODE_NAME", ""),
 		metav1.DeleteOptions{})
 	if err != nil && !errors.IsNotFound(err) {
 		return err
@@ -57,7 +57,7 @@ func createConfigMapWithTestResults(results []v2.TestResult) error {
 
 	cm := v1.ConfigMap{
 		ObjectMeta: metav1.ObjectMeta{
-			Name:      "runai-diagnostics-" + env.EnvOrDefault("NODE_NAME", ""),
+			Name:      resources.ResourceNameDefault + "-" + env.EnvOrDefault("NODE_NAME", ""),
 			Namespace: resources.Namespace.Name,
 		},
 		Data: map[string]string{

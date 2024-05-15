@@ -11,9 +11,9 @@ var ClusterRoleBinding = rbacv1.ClusterRoleBinding{
 		Kind:       "ClusterRoleBinding",
 	},
 	ObjectMeta: metav1.ObjectMeta{
-		Name: defaultResourceName,
+		Name: ResourceNameDefault,
 		Labels: map[string]string{
-			defaultResourceName: "",
+			ResourceNameDefault: "",
 		},
 	},
 	RoleRef: rbacv1.RoleRef{

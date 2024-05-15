@@ -116,8 +116,8 @@ func getNodesTestsResultsTables() ([]NodeResult, error) {
 	}
 
 	for _, node := range nodeList.Items {
-		cm, err := k8s.CoreV1().ConfigMaps("runai-diagnostics").
-			Get(context.TODO(), "runai-diagnostics-"+node.Name, metav1.GetOptions{})
+		cm, err := k8s.CoreV1().ConfigMaps(resources.ResourceNameDefault).
+			Get(context.TODO(), resources.ResourceNameDefault+"-"+node.Name, metav1.GetOptions{})
 		if err != nil {
 			return nil, err
 		}

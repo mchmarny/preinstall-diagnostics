@@ -11,9 +11,9 @@ var Namespace = v1.Namespace{
 		Kind:       "Namespace",
 	},
 	ObjectMeta: metav1.ObjectMeta{
-		Name: defaultResourceName,
+		Name: ResourceNameDefault,
 		Labels: map[string]string{
-			defaultResourceName: "",
+			ResourceNameDefault: "",
 		},
 	},
 }

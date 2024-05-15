@@ -104,7 +104,7 @@ func WaitForJobPodsToBeRunning(logger *log.Logger) error {
 	for podAvailabilityAttempts > 0 {
 		logger.LogF("waiting for jobs to be available...")
 
-		jobs, err := k8s.BatchV1().Jobs("runai-diagnostics").List(context.TODO(), metav1.ListOptions{})
+		jobs, err := k8s.BatchV1().Jobs(resources.ResourceNameDefault).List(context.TODO(), metav1.ListOptions{})
 		if err != nil {
 			return err
 		}
@@ -128,7 +128,7 @@ func WaitForJobPodsToBeRunning(logger *log.Logger) error {
 
 func GetJobsPods(client *kubernetes.Clientset) ([]v1.Pod, error) {
 	labelSelector := strings.ReplaceAll(labels.FormatLabels(map[string]string{
-		"runai-diagnostics": "",
+		resources.ResourceNameDefault: "",
 	}), "=", "")
 	pods, err := client.CoreV1().Pods(resources.Namespace.Name).List(context.TODO(), metav1.ListOptions{
 		LabelSelector: labelSelector,

@@ -11,10 +11,10 @@ var Role = rbacv1.ClusterRole{
 		Kind:       "Role",
 	},
 	ObjectMeta: metav1.ObjectMeta{
-		Name:      defaultResourceName,
-		Namespace: defaultResourceName,
+		Name:      ResourceNameDefault,
+		Namespace: ResourceNameDefault,
 		Labels: map[string]string{
-			defaultResourceName: "",
+			ResourceNameDefault: "",
 		},
 	},
 	Rules: []rbacv1.PolicyRule{

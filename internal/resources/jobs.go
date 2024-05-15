@@ -27,17 +27,17 @@ func templateJobForNode(nodeName, backendFQDN string) *batchv1.Job {
 			Kind:       "Job",
 		},
 		ObjectMeta: metav1.ObjectMeta{
-			Name:      defaultResourceName + "-" + nodeName,
+			Name:      ResourceNameDefault + "-" + nodeName,
 			Namespace: Namespace.Name,
 			Labels: map[string]string{
-				defaultResourceName: "",
+				ResourceNameDefault: "",
 			},
 		},
 		Spec: batchv1.JobSpec{
 			Template: v1.PodTemplateSpec{
 				ObjectMeta: metav1.ObjectMeta{
 					Labels: map[string]string{
-						defaultResourceName: nodeName,
+						ResourceNameDefault: nodeName,
 					},
 				},
 				Spec: v1.PodSpec{
@@ -51,7 +51,7 @@ func templateJobForNode(nodeName, backendFQDN string) *batchv1.Job {
 					ServiceAccountName: ServiceAccount.Name,
 					Containers: []v1.Container{
 						{
-							Name:            defaultResourceName,
+							Name:            ResourceNameDefault,
 							Image:           defaultImage,
 							ImagePullPolicy: v1.PullAlways,
 							Ports: []v1.ContainerPort{
